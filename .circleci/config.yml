@@ -21,42 +21,42 @@ version: 2.1
 jobs:
   build:  # required for runs that do not use workflows
     docker:
-      - image: circleci/python:3.7
-      
-      working_directory: ~/circleci-project-setup
-      
-      # The steps of a job occur in a virtual environment called an executor
-      steps:
-        - checkout
+      - image: circleci/python:3.7.9
 
-        # Download and cache dependencies
-        - restore_cache:
-            keys:
-              - v1-dependencies-{{ checksum "requirements.txt"  }}
-              # fallback to using the latest cache if no exact match is found
-              - v1-dependencies-
+    working_directory: ~/circleci-project-setup
+    
+    # The steps of a job occur in a virtual environment called an executor
+    steps:
+      - checkout
 
-        - run:
-            name: install dependencies
-            command: |
-              conda create -n msds434 python=3.7
-              activate msds434
-              make install
-        - save_cache:
-            paths:
-              - ./msds434
-            key: v1-dependencies-{{ checksum "requirements.txt"  }}
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "requirements.txt"  }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
 
-        # Run tests
-        - run:
-            name: run tests
-            command: |
-              activate msds434
-              make test
+      - run:
+          name: install dependencies
+          command: |
+            conda create -n msds434 python=3.7
+            activate msds434
+            make install
+      - save_cache:
+          paths:
+            - ./msds434
+          key: v1-dependencies-{{ checksum "requirements.txt"  }}
 
-        # Run lints
-        - run:
-            name: run lints
-            command: |
-              activate msds434
-              make lint
+      # Run tests
+      - run:
+          name: run tests
+          command: |
+            activate msds434
+            make test
+
+      # Run lints
+      - run:
+          name: run lints
+          command: |
+            activate msds434
+            make lint
