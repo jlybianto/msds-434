@@ -5,10 +5,10 @@ install:
 	pip install -r requirements.txt
 
 test:
-	python -m pytest -vv --cov=msds-434 myrepolib tests/
+	python -m pytest -vv --cov=myrepolib tests/
 
 lint:
-	pylint --disable=R,C msds-434 myrepolib
+	pylint --disable=R,C myrepolib
 	# C conventional related checks
 	# R refactoring related checks
 	# W various warnings
