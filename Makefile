@@ -5,10 +5,10 @@ install:
 	pip install -r requirements.txt
 
 test:
-	python -m pytest -vv --cov=msds-434 tests/
+	python -m pytest -vv tests/
 
 lint:
-	pylint --disable=R,C mdsd-434
+	pylint --disable=R,C
 	# C conventional related checks
 	# R refactoring related checks
 	# W various warnings
