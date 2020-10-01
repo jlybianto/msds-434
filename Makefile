@@ -1,14 +1,14 @@
 setup:
-	python3 -m venv ~/.myrepo
+	python3 -m venv ~/.msds-434
 
 install:
 	pip install -r requirements.txt
 
 test:
-	python -m pytest -vv --cov=myrepolib tests/
+	python -m pytest -vv --cov=msds-434 tests/
 
 lint:
-	pylint --disable=R,C myrepolib
+	pylint --disable=R,C mdsd-434
 	# C conventional related checks
 	# R refactoring related checks
 	# W various warnings
