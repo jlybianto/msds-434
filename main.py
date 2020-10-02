@@ -8,11 +8,6 @@ def hello():
 	"""Return a friendly HTTP greeting."""
 	return "Hello World!"
 
-<<<<<<< HEAD
-=======
-from flask import jsonify
-
->>>>>>> circleci-project-setup
 @app.route('/name/<value>')
 def name(value):
     val = {
