@@ -7,6 +7,8 @@ def hello():
 	"""Return a friendly HTTP greeting."""
 	return "Hello World!"
 
+from flask import jsonify
+
 @app.route('/name/<value>')
 def name(value):
     val = {
